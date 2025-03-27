@@ -28,3 +28,11 @@ use rocket::serde::json::Json;
          Err(e) => Err(e)
      };
  }
+
+ #[get("/")]
+ pub fn list() -> Result<Json<Vec<String>>> {
+     return match NotificationService::list_messages() {
+         Ok(f) => Ok(Json::from(f)),
+         Err(e) => Err(e)
+     };
+ }
